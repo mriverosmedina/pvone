@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using pvone.Views;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace pvone
@@ -11,7 +12,7 @@ namespace pvone
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new ProductsPage();
         }
 
         protected override void OnStart()
