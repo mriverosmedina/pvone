@@ -11,6 +11,6 @@ namespace pvone.Domain.Models
 
         }
 
-        public System.Data.Entity.DbSet<pvone.Common.Models.Product> Products { get; set; }
+        public DbSet<Common.Models.Product> Products { get; set; }
     }
 }

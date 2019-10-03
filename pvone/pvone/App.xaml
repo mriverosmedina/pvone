@@ -4,8 +4,13 @@
              xmlns:infra="clr-namespace:pvone.Infrastructure"
              x:Class="pvone.App">
     <Application.Resources>
+        <!--Locator-->
         <ResourceDictionary>
             <infra:InstanceLocator x:Key="Locator"/>
+        </ResourceDictionary>
+        <ResourceDictionary >
+            
+            
         </ResourceDictionary>
 
     </Application.Resources>

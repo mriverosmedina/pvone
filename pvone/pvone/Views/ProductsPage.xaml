@@ -6,6 +6,9 @@
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Products}">
+            <ListView
+                ItemsSource="{Binding Products}">
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
