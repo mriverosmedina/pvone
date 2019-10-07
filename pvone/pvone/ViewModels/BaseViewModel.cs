@@ -10,15 +10,16 @@ namespace pvone.ViewModels
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+           this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        protected void SetValue<T>(ref T backingfield, T value, [CallerMemberName] string propertyName = null)
+
+        protected void SetValue<T>(ref T backingField, T value, [CallerMemberName] string propertyName = null)
         {
-            if (EqualityComparer<T>.Default.Equals(backingfield, value))
+            if (EqualityComparer<T>.Default.Equals(backingField, value))
             {
                 return;
             }
-            backingfield = value;
+            backingField = value;
             OnPropertyChanged(propertyName);
         }
 

@@ -10,30 +10,31 @@ namespace pvone.ViewModels
     {
 
         private ApiService apiservice;
-        private ObservableCollection<Product> products;
 
+        private ObservableCollection<Product> products;
         public ObservableCollection<Product> Products
         {
-            get => products;
-            set => SetValue(ref products, value);
+            get { return this.products; }
+            set {this.SetValue(ref this.products, value);}
         }
+
         public ProductsViewModel()
         {
             apiservice = new ApiService();
-            LoadProducts();
+            this.LoadProducts();
         }
 
         private async void LoadProducts()
         {
-            Response response = await apiservice.GetList<Product>("http://localhost:51083", "/api", "/products");
+            var response = await apiservice.GetList<Product>("http://pvoneservice.somee.com", "/api", "/Products");
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Aceptar");
                 return;
             }
 
-            List<Product> list = (List<Product>)response.Result;
-            Products = new ObservableCollection<Product>(list);
+            var list = (List<Product>)response.Result;
+            this.Products = new ObservableCollection<Product>(list);
         }
     }
 

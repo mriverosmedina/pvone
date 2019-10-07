@@ -14,13 +14,11 @@ namespace pvone.Service
         {
             try
             {
-                HttpClient client = new HttpClient
-                {
-                    BaseAddress = new Uri(urlBase)
-                };
-                string url = $"{urlBase}{prefix}";
-                HttpResponseMessage response = await client.GetAsync(url);
-                string answer = await response.Content.ReadAsStringAsync();
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);               
+                var url = $"{prefix}{controller}";
+                var response = await client.GetAsync(url);
+                var answer = await response.Content.ReadAsStringAsync();
                 //
                 if (!response.IsSuccessStatusCode)
                 {
@@ -31,7 +29,7 @@ namespace pvone.Service
                     };
 
                 }
-                List<T> list = JsonConvert.DeserializeObject<List<T>>(answer);
+                var list = JsonConvert.DeserializeObject<List<T>>(answer);
                 return new Response
                 {
                     IsSuccess = true,
@@ -42,12 +40,10 @@ namespace pvone.Service
             {
                 return new Response
                 {
-                    IsSuccess = true,
+                    IsSuccess = false,
                     Message = ex.Message
                 };
-
             }
-
         }
 
 
