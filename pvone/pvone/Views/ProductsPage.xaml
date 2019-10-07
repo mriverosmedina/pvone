@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
              x:Class="pvone.Views.ProductsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Productos">
+             Title="Products">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Products}"
@@ -11,7 +11,10 @@
             
             <ListView
                 HasUnevenRows="True"
-                ItemsSource="{Binding Products}">
+                IsRefreshing="{Binding IsRefreshing}"
+                IsPullToRefreshEnabled="True"
+                ItemsSource="{Binding Products}"
+                RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

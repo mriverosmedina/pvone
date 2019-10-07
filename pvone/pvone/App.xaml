@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:infra="clr-namespace:pvone.Infrastructure"
              x:Class="pvone.App">
-    <Application.Resources>
-        <!--Locator-->
+    <Application.Resources>      
         <ResourceDictionary>
+            <!--Locator-->
             <infra:InstanceLocator x:Key="Locator"/>
-        </ResourceDictionary>       
-
+            
+            <!--Parameter-->
+            <x:String x:Key="UrlAPI">http://pvoneservice.somee.com</x:String>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

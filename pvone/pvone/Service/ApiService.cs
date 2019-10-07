@@ -1,24 +1,50 @@
 ﻿using Newtonsoft.Json;
+using Plugin.Connectivity;
 using pvone.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
 namespace pvone.Service
 {
     public class ApiService
     {
+        public async Task<Response> CheckConnection()
+        {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Please turn on your internet setting.",
+                };
+            }
+
+            bool isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
+            if (!isReachable)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "No internet connection.",
+                };
+            }
+            return new Response
+            {
+                IsSuccess = true,
+            };
+        }
+
         public async Task<Response> GetList<T>(string urlBase, string prefix, string controller)
         {
             try
             {
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);               
-                var url = $"{prefix}{controller}";
-                var response = await client.GetAsync(url);
-                var answer = await response.Content.ReadAsStringAsync();
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                string url = $"{prefix}{controller}";
+                HttpResponseMessage response = await client.GetAsync(url);
+                string answer = await response.Content.ReadAsStringAsync();
                 //
                 if (!response.IsSuccessStatusCode)
                 {
@@ -29,7 +55,7 @@ namespace pvone.Service
                     };
 
                 }
-                var list = JsonConvert.DeserializeObject<List<T>>(answer);
+                List<T> list = JsonConvert.DeserializeObject<List<T>>(answer);
                 return new Response
                 {
                     IsSuccess = true,
