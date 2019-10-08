@@ -34,11 +34,12 @@ namespace pvone.Helpers
             var translation = ResMgr.Value.GetString(Text, ci);
             if (translation == null)
             {
-               throw new ArgumentException(string.Format("Key '{0}' was not found in resources '{1}' for culture '{2}'", Text, ResourceId, ci), "Text");
-            }
-            else
-            {
+#if DEBUG
+                throw new ArgumentException(string.Format("Key '{0}' was not found in resources '{1}' for culture '{2}.'", Text, ResourceId, ci.Name), "Text");
+#else
                 translation = Text;
+#endif
+
             }
             return translation;
         }

@@ -32,7 +32,7 @@
                                 <Label
                                     Grid.Column="2"
                                     HorizontalOptions="End"
-                                    Text="{Binding Price, StringFormat='{0:N}'}">                                    
+                                    Text="{Binding Price, StringFormat='{0:C2}'}">                                    
                                 </Label>
 
                             </Grid>

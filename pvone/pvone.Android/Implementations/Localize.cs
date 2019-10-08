@@ -1,16 +1,18 @@
 ﻿using pvone.Helpers;
+using pvone.Interfaces;
 using System.Globalization;
+using System.Threading;
 
 [assembly: Xamarin.Forms.Dependency(typeof(pvone.Droid.Implementations.Localize))]
 
 namespace pvone.Droid.Implementations
 {
-    public class Localize
+    public class Localize : ILocalize
     {
         public CultureInfo GetCurrentCultureInfo()
         {
-            string netLanguage = "en";
-            Java.Util.Locale androidLocale = Java.Util.Locale.Default;
+            var netLanguage = "en";
+            var androidLocale = Java.Util.Locale.Default;
             netLanguage = AndroidToDotnetLanguage(androidLocale.ToString().Replace("_", "-"));
             CultureInfo ci = null;
             try
@@ -21,7 +23,7 @@ namespace pvone.Droid.Implementations
             {
                 try
                 {
-                    string fallback = ToDotnetFallbackLanguage(new PlatformCulture(netLanguage));
+                    var fallback = ToDotnetFallbackLanguage(new PlatformCulture(netLanguage));
                     ci = new CultureInfo(fallback);
                 }
                 catch (CultureNotFoundException e2)
@@ -32,9 +34,15 @@ namespace pvone.Droid.Implementations
             return ci;
         }
 
+        public void SetLocale(CultureInfo ci)
+        {
+            Thread.CurrentThread.CurrentCulture = ci;
+            Thread.CurrentThread.CurrentUICulture = ci;
+        }
+
         string AndroidToDotnetLanguage(string androidLanguage)
         {
-            string netLanguage = androidLanguage;
+            var netLanguage = androidLanguage;
             switch (androidLanguage)
             {
                 case "ms-BN":
@@ -54,11 +62,11 @@ namespace pvone.Droid.Implementations
 
         string ToDotnetFallbackLanguage(PlatformCulture platCulture)
         {
-            string netLanguage = platCulture.LanguageCode;
+            var netLanguage = platCulture.LanguageCode;
             switch (platCulture.LanguageCode)
             {
                 case "gsw":
-                    netLanguage = "de-Ch";
+                    netLanguage = "de-CH";
                     break;
             }
             return netLanguage;
