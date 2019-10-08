@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Plugin.Connectivity;
 using pvone.Common.Models;
+using pvone.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -17,7 +18,7 @@ namespace pvone.Service
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Please turn on your internet setting.",
+                    Message = Languages.TurnOnInternet,
                 };
             }
 
@@ -27,7 +28,7 @@ namespace pvone.Service
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "No internet connection.",
+                    Message = Languages.NoInternet,
                 };
             }
             return new Response
@@ -53,7 +54,6 @@ namespace pvone.Service
                         IsSuccess = false,
                         Message = answer
                     };
-
                 }
                 List<T> list = JsonConvert.DeserializeObject<List<T>>(answer);
                 return new Response

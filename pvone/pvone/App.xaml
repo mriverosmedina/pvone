@@ -10,6 +10,9 @@
             
             <!--Parameter-->
             <x:String x:Key="UrlAPI">http://pvoneservice.somee.com</x:String>
+            <x:String x:Key="UrlPrefix">/api</x:String>
+            <x:String x:Key="UrlControllers">/Products</x:String>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

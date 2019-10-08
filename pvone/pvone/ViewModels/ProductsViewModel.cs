@@ -46,7 +46,9 @@ namespace pvone.ViewModels
                 return;
             }
             string url = Application.Current.Resources["UrlAPI"].ToString();
-            Response response = await apiservice.GetList<Product>(url, "/api", "/Products");
+            string prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            string controller = Application.Current.Resources["UrlControllers"].ToString();
+            Response response = await apiservice.GetList<Product>(url, prefix, controller);
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
