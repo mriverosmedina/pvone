@@ -1,4 +1,4 @@
-﻿using pvone.Interface;
+﻿using pvone.Interfaces;
 using System;
 using System.Globalization;
 using System.Reflection;

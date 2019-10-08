@@ -13,11 +13,11 @@ namespace pvone.Helpers
             }
 
             PlatformString = platformCulturestring.Replace("_", "-");
-            int dashIndex = PlatformString.IndexOf("-", StringComparison.Ordinal);
+            var dashIndex = PlatformString.IndexOf("-", StringComparison.Ordinal);
 
             if (dashIndex > 0)
             {
-                string[] parts = PlatformString.Split('-');
+                var parts = PlatformString.Split('-');
                 LanguageCode = parts[0];
                 LocaleCode = parts[1];
             }

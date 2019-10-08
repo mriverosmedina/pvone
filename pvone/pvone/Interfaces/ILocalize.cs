@@ -1,11 +1,15 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Text;
 
-namespace pvone.Interface
+namespace pvone.Interfaces
 {
     public interface ILocalize
     {
         CultureInfo GetCurrentCultureInfo();
 
         void SetLocale(CultureInfo ci);
+
     }
 }

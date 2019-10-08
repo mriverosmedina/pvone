@@ -8,6 +8,6 @@ namespace pvone.Backend.Models
 {
     public class LocalDataContext: DataContext
     {
-        public System.Data.Entity.DbSet<pvone.Common.Models.Product> Products { get; set; }
+        public new System.Data.Entity.DbSet<Common.Models.Product> Products { get; set; }
     }
 }
