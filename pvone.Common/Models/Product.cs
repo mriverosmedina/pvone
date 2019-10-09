@@ -12,6 +12,10 @@ namespace pvone.Common.Models
         [StringLength(50)]
         public string Description { get; set; }
 
+        [DataType(DataType.MultilineText)]
+        public string Remarks { get; set; }
+
+
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
 

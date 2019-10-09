@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using pvone.Common.Models;
+using System.Data.Entity;
 
 namespace pvone.Domain.Models
 {
@@ -7,10 +8,8 @@ namespace pvone.Domain.Models
         public DataContext():base("DefaultConnection")
         {
 
-
-
         }
 
-        public DbSet<Common.Models.Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
