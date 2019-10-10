@@ -15,7 +15,6 @@ namespace pvone.Common.Models
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
 
-
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
 
@@ -28,6 +27,19 @@ namespace pvone.Common.Models
         [Display(Name = "Publish On")]
         [DataType(DataType.Date)]
         public DateTime PublishOn { get; set; }
+
+        public string ImageFullPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.ImagePath))
+                {
+                    return "iconfinder_box_60733";
+                }
+                return $"http://pvoneservice.somee.com/{this.ImagePath.Substring(1)}";
+            }
+        }
+
 
         public override string ToString()
         {

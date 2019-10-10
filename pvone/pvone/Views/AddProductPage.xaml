@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:i18n="clr-namespace:pvone.Helpers"
+             x:Class="pvone.Views.AddProductPage" 
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate AddProduct}">
+    <ContentPage.Content>
+        <ScrollView
+             BindingContext="{Binding AddProduct}">
+            <StackLayout           
+            Padding="5">
+                <Label 
+                    Text="{i18n:Translate Description}"/>
+                <Entry
+                    Placeholder="{i18n:Translate DescriptionPlaceholder}"/>
+                <Label 
+                    Text="{i18n:Translate Price}"/>
+                <Entry
+                    Keyboard="Numeric"
+                    Placeholder="{i18n:Translate PricePlaceholder}"/>
+                <Label
+                    Text="{i18n:Translate Remarks}"/>
+                <Editor
+                    VerticalOptions="FillAndExpand"/>
+                <ActivityIndicator/>
+                <Button
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    WidthRequest="46"
+                    Text="{i18n:Translate Save}"
+                    TextColor="White"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
