@@ -151,6 +151,9 @@
     <value>Remarques :</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Enregistrer</value>
+    <value>Sauvegarder</value>
+  </data>
+  <data name="ChangeImage" xml:space="preserve">
+    <value>Touchez l'image pour la changer</value>
   </data>
 </root>

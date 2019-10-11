@@ -25,5 +25,6 @@ namespace pvone.Helpers
         public static string PricePlaceholder => Resource.PricePlaceholder;
         public static string Remarks => Resource.Remarks;
         public static string Save => Resource.Save;
+        public static string ChangeImage => Resource.ChangeImage;
     }
 }

@@ -79,6 +79,15 @@ namespace pvone.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Touch the image to change it.
+        /// </summary>
+        public static string ChangeImage {
+            get {
+                return ResourceManager.GetString("ChangeImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Description.
         /// </summary>
         public static string Description {
