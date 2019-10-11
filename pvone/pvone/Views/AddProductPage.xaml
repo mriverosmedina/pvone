@@ -22,33 +22,52 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+
+                    </Grid.RowDefinitions>
                     <Label 
-                        Text="{i18n:Translate Description}"/>
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{i18n:Translate Description}"
+                        VerticalOptions="Center"/>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="0"
+                        Text="{Binding Description}"
                         Placeholder="{i18n:Translate DescriptionPlaceholder}"/>
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
-                        Text="{i18n:Translate Price}"/>
+                        Text="{i18n:Translate Price}"
+                        VerticalOptions="Center"/>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="1"
                         Keyboard="Numeric"
+                        Text="{Binding Price}"
                         Placeholder="{i18n:Translate PricePlaceholder}"/>
                     <Label
                         Grid.Column="0"
                         Grid.Row="2"
                         Text="{i18n:Translate Remarks}"/>
                     <Editor
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="{Binding Remarks}"
                         VerticalOptions="FillAndExpand"/>
                 </Grid>
-                <ActivityIndicator/>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand"/>
                 <Button
                     BackgroundColor="Navy"
                     BorderRadius="23"
-                    WidthRequest="46"
+                    Command="{Binding SaveCommand}"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
                     Text="{i18n:Translate Save}"
                     TextColor="White"/>
             </StackLayout>

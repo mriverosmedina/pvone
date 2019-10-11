@@ -26,5 +26,7 @@ namespace pvone.Helpers
         public static string Remarks => Resource.Remarks;
         public static string Save => Resource.Save;
         public static string ChangeImage => Resource.ChangeImage;
+        public static string DescriptionError => Resource.DescriptionError;
+        public static string PriceError => Resource.PriceError;
     }
 }
